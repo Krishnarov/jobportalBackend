@@ -86,7 +86,7 @@ export const updatecompani = async (req, res) => {
 export const getCompany=async(req,res)=>{
   try {
     const userId=req.id
-    // console.log(userId);
+    console.log(userId);
     
     const companay=await Company.find({userId})
 
