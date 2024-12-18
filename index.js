@@ -14,17 +14,11 @@ import { fileURLToPath } from "url";
 const app = express();
 dotenv.config();
 app.use(express.json());
-const allowedOrigins = ["http://localhost:3000", "https://jobportalbykrishna.netlify.app"];
+const allowedOrigins = ["https://jobportalbykrishna.netlify.app","http://localhost:3000",];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin:allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

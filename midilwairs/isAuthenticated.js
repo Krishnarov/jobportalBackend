@@ -5,10 +5,11 @@ const isAuthenticated = (req, res, next) => {
   // console.log("Authorization Header:", req.headers.authorization);
   try {
     const token = req.cookies.token;
+    const cooki =req.cookies
     if (!token) {
       return res
         .status(401)
-        .json({ messeage: "Authentication token is required" });
+        .json({ messeage: "Authentication token is required",cooki });
     }
     const decoded = jwt.verify(token, process.env.JWT_KEY);
     // console.log("Decoded token:", decoded)

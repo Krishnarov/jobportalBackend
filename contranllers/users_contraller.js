@@ -63,7 +63,7 @@ export const login = async (req, res) => {
     res.status(201).cookie("token",token,{maxAge: 1 * 24 * 60 * 60 * 1000,
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "none",}).json({message:`welcome back ${user.name} ! `,user})
+      sameSite: "none",}).json({message:`welcome back ${user.name} ! `,user,token})
     
   } catch (error) {
     console.log(error);
