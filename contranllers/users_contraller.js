@@ -60,10 +60,16 @@ export const login = async (req, res) => {
     
     const token= jwt.sign(tokendata,process.env.JWT_KEY,{expiresIn:"1d"})
    
-    res.status(201).cookie("token",token,{maxAge: 1 * 24 * 60 * 60 * 1000,
+    res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "none",}).json({message:`welcome back ${user.name} ! `,user,token})
+      secure: true, // For HTTPS only
+      sameSite: "none", // Required for cross-site cookies
+      maxAge: 24 * 60 * 60 * 1000, // 1 दिन
+  }).json({message:`welcome back ${user.name} ! `,user,token});
+    // res.status(201).cookie("token",token,{maxAge: 1 * 24 * 60 * 60 * 1000,
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === "production",
+    //   sameSite: "none",}).json({message:`welcome back ${user.name} ! `,user,token})
     
   } catch (error) {
     console.log(error);

@@ -14,13 +14,14 @@ import { fileURLToPath } from "url";
 const app = express();
 dotenv.config();
 app.use(express.json());
-const allowedOrigins = ["https://jobportalbykrishna.netlify.app","http://localhost:3000",];
+// const allowedOrigins = ["https://jobportalbykrishna.netlify.app","http://localhost:3000",];
 
 app.use(
   cors({
-    origin:allowedOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin:"https://jobportalbykrishna.netlify.app",
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+
   })
 );
 app.use(cookieParser());
