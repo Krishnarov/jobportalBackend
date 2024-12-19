@@ -62,7 +62,7 @@ export const login = async (req, res) => {
    
    return res.cookie("token",token, {
       httpOnly: true,
-      secure: true, // For HTTPS only
+      secure: false, // For HTTPS only
       sameSite: "none", // Required for cross-site cookies
       maxAge: 24 * 60 * 60 * 1000, // 1 दिन
   }).json({message:`welcome back ${user.name} ! `,user,token});

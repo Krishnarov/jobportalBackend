@@ -15,7 +15,7 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 // const allowedOrigins = ["https://jobportalbykrishna.netlify.app","http://localhost:3000",];
-const allowedOrigins = ["https://jobportalbykrishna.netlify.app"];
+const allowedOrigins ="https://jobportalbykrishna.netlify.app";
 app.use(
   cors({
     origin:allowedOrigins,
