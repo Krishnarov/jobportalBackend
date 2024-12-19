@@ -6,10 +6,12 @@ const isAuthenticated = (req, res, next) => {
   try {
     const token = req.cookies.token;
     const cooki =req.cookies
+    const hader =req.headers.authorization
+    
     if (!token) {
       return res
         .status(401)
-        .json({ messeage: "Authentication token is required",cooki });
+        .json({ messeage: "Authentication token is required",cooki,hader });
     }
     const decoded = jwt.verify(token, process.env.JWT_KEY);
     // console.log("Decoded token:", decoded)

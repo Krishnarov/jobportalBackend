@@ -60,7 +60,7 @@ export const login = async (req, res) => {
     
     const token= jwt.sign(tokendata,process.env.JWT_KEY,{expiresIn:"1d"})
    
-    res.cookie("token", token, {
+   return res.cookie("token",token, {
       httpOnly: true,
       secure: true, // For HTTPS only
       sameSite: "none", // Required for cross-site cookies
