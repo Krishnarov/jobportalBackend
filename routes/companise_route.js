@@ -8,7 +8,7 @@ const routes = express.Router();
 routes.post("/regcompanise",isAuthenticated,regcompanise)  //done
 
 routes.post("/getonecompanise/:id",isAuthenticated,getOnecompani) //done
-routes.post("/getCompany",isAuthenticated,getCompany)//done
+routes.get("/getCompany",isAuthenticated,getCompany)//done
 
 routes.put("/updatecompani/:id",isAuthenticated,upload.single("logo"),updatecompani)//done
 routes.delete("/deletecompany/:id",isAuthenticated,deletecompany)//done
