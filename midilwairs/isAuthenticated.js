@@ -1,20 +1,16 @@
 import jwt from "jsonwebtoken";
 
 const isAuthenticated = (req, res, next) => {
-  // console.log("Cookies:", req.cookies); // Debug cookies
-  // console.log("Authorization Header:", req.headers.authorization);
   try {
-    const token = req.cookies.token;
-    const cooki =req.cookies
-    const hader =req.headers.authorization
+    const token = req.headers.authorization?.split(" ")[1];    
+    console.log(token);
     
     if (!token) {
       return res
         .status(401)
-        .json({ messeage: "Authentication token is required",cooki,hader });
+        .json({ messeage: "Authentication token is required",token });
     }
     const decoded = jwt.verify(token, process.env.JWT_KEY);
-    // console.log("Decoded token:", decoded)
     if (!decoded) {
       return res.status(401).json({ messeage: "invalied token", token: token });
     }

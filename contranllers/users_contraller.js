@@ -56,21 +56,11 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "invalid email or password" });
     }
     const tokendata={userId:user._id}
-    // console.log(tokendata );
     
     const token= jwt.sign(tokendata,process.env.JWT_KEY,{expiresIn:"1d"})
    
-   return res.cookie("token",token, {
-      httpOnly: true,
-      secure: false, // For HTTPS only
-      sameSite: "none", // Required for cross-site cookies
-      maxAge: 24 * 60 * 60 * 1000, // 1 दिन
-  }).json({message:`welcome back ${user.name} ! `,user,token});
-    // res.status(201).cookie("token",token,{maxAge: 1 * 24 * 60 * 60 * 1000,
-    //   httpOnly: true,
-    //   secure: process.env.NODE_ENV === "production",
-    //   sameSite: "none",}).json({message:`welcome back ${user.name} ! `,user,token})
-    
+   return res.status(200).json({message:`welcome back ${user.name} ! `,user,token});
+  
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "internal server error" });
